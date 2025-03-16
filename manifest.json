@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Chatbot Pretext Inserter",
+  "description": "Prepend repeatable text to chatbot requests.",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{2a2e4ab0-546b-4009-a586-5336abfbb8f6}",
+      "strict_min_version": "57.0"
+    }
+  }
+}
